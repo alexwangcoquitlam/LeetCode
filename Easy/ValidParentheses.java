@@ -5,6 +5,7 @@ import java.util.Stack;
 
 public class ValidParentheses{
     public static void main(String[] args){
+        // #20
         Scanner keyboard = new Scanner(System.in);
         System.out.print("Please enter a string: ");
         String input = keyboard.nextLine();

@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class RemoveDuplicatesfromSortedArray {
     public static void main (String[] args){
+        // #26
         int[] arr = {1,1,1,1,2,2,2,2,3,3,3,3,5,5,5,5,6,6,11,11,12,12,12,100,100};
         removeDuplicates(arr);
     }

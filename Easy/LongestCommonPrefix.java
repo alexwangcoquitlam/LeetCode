@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class LongestCommonPrefix {
     public static void main(String[] args) {
+        // #14
         String[] strings = {"cir", "car"};
         System.out.println("The longest prefix is: \"" + longestCommonPrefix(strings) + "\"");
     }
