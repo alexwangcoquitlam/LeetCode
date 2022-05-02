@@ -1,4 +1,4 @@
-package MergeTwoSortedLists;
+package Easy.MergeTwoSortedLists;
 
 public class MergeTwoSortedLists {
     public static void main(String[] arg) {

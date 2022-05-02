@@ -1,3 +1,5 @@
+package Easy;
+
 public class AddBinary {
     public static void main(String[] args){
         // #67
