@@ -18,6 +18,7 @@ public class LetterCombinationsOfPhoneNumber {
             for(int j = 0; j < count; j++){
                 temp += Character.toString(97 + (curr-2)*3 + j);
                 // Just need to figure out when to append the strings
+                
             }
         }
 
