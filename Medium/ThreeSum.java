@@ -1,6 +1,7 @@
 package Medium;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,54 +9,36 @@ import java.util.Map;
 public class ThreeSum {
 
     public static void main(String[] args) {
-        // #15
-        int[] nums = { 1, 2, -2, -1 };
+        // #15 3Sum
+        int[] nums = {-1,0,1,2,-1,-4,-2,-3,3,0,4};
         List<List<Integer>> res = threeSum(nums);
-        System.out.println("break");
     }
 
     public static List<List<Integer>> threeSum(int[] nums) {
-        // find 2 sum that add to a value in the array
-        if (nums.length <= 2) {
-            return new ArrayList<List<Integer>>();
-        }
-
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
-
-        for (int i = 0; i < nums.length; i++) {
-            List<Integer> temp = twoSum(nums, (-1) * nums[i], i);
-            if (temp.size() == 3) {
-                if (!checkContains(result, temp)) {
-                    result.add(temp);
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+        for(int i = 0; i < nums.length-2; i++){
+            if(!(i > 0 && nums[i] == nums[i-1])){
+                int left = i+1, right = nums.length-1;
+                int target = -1*nums[i];
+                while(left < right){
+                    if(nums[left] + nums[right] == target){
+                        result.add(Arrays.asList(nums[i], nums[left], nums[right]));
+                        left++;
+                        right--;
+                        while(left < right && nums[left] == nums[left-1]) left++;
+                        while(left < right && nums[right] == nums[right+1]) right--;
+                    }                    
+                    else if(nums[left] + nums[right] < target) {
+                        left++;
+                    }
+                    else{
+                        right--;
+                    }
                 }
             }
         }
-        return result;
-    }
 
-    public static List<Integer> twoSum(int[] numbers, int target, int given) {
-        List<Integer> result = new ArrayList<Integer>();
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-        for (int i = 0; i < numbers.length; i++) {
-            if (map.containsKey(target - numbers[i])) {
-                if (i != given && map.get(target - numbers[i]) != given) {
-                    result.add(numbers[i]);
-                    result.add(numbers[map.get(target - numbers[i])]);
-                    result.add(numbers[given]);
-                    return result;
-                }
-            }
-            map.put(numbers[i], i);
-        }
         return result;
-    }
-
-    public static boolean checkContains(List<List<Integer>> input, List<Integer> curr) {
-        for (List<Integer> iterator : input) {
-            if (iterator.containsAll(curr)) {
-                return true;
-            }
-        }
-        return false;
     }
 }
